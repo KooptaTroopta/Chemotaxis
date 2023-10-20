@@ -110,7 +110,7 @@ class lilarmy {
         fred[j] = 1000;
       }
     }
-   if (Math.random()<0.6) {
+   if (Math.random()<0.7) {
      if (army[least(fred)].x > x) {
       x += (int)(Math.random()*3);
     } else {
