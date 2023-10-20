@@ -37,10 +37,10 @@ class lilarmy {
     o = ind;
   }
   void show() {
-    if (c == color(255,0,0){
+    if (c == color(255,0,0)){
     fill(c);
     rect(x,y,8,8);
-    } else if (c == color(0,255,0) {
+    } else if (c == color(0,255,0)) {
     fill(c);
     triangle(x,y+8,x+8,y+7,x+4,y);
     } else {
