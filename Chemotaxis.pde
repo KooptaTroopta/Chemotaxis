@@ -37,16 +37,12 @@ class lilarmy {
     o = ind;
   }
   void show() {
-    if (c == color(255,0,0)){
     fill(c);
     rect(x,y,8,8);
-    } else if (c == color(0,255,0)) {
-    fill(c);
-    triangle(x,y+8,x+8,y+7,x+4,y);
-    } else {
-    fill(c);
-    ellipse(x-4,y-4,8,8);
-    }
+    fill(255);
+    rect(x+1,y+1,1,1);
+    rect(x+6,y+1,1,1);
+    rect(x+1,y+6,6,1);
   }
   void jimmy() {
     countE = 0;
