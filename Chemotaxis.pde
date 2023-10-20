@@ -110,6 +110,8 @@ class lilarmy {
         fred[j] = 1000;
       }
     }
+    x += (int)(Math.random*5-2);
+    y += (int)(Math.random*5-2);
    if (Math.random()<0.7) {
      if (army[least(fred)].x > x) {
       x += (int)(Math.random()*3);
