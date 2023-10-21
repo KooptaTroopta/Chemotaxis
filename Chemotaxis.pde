@@ -2,8 +2,6 @@ lilarmy[] army = new lilarmy[60];
 int speeeeed = 10;
 PFont zawg;
 void setup(){
-  String[] list = PFont.list();
-  printArray(list);
   size(500,500);
   noStroke();
   for (int i = 0; i<20; i++) {
