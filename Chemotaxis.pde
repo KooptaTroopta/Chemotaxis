@@ -1,7 +1,11 @@
 lilarmy[] army = new lilarmy[60];
-int speeeeed = 20;
+int speeeeed = 10;
+PFont zawg;
 void setup(){
+  String[] list = PFont.list();
+  printArray(list);
   size(500,500);
+  noStroke();
   for (int i = 0; i<20; i++) {
     army[i] = new lilarmy((int)(Math.random()*501),(int)(Math.random()*401),color(0,0,255),i);
   }
@@ -14,12 +18,22 @@ void setup(){
 }
 void mousePressed() {
   speeeeed += 20;
-  if (speeeeed > 80)
-  speeeeed = 20;
+  if (speeeeed > 90)
+  speeeeed = 10;
   frameRate(speeeeed);
+  System.out.println(army[0].x);
+  System.out.println(army[0].y);
+  for (int i = 0; i<60; i++) {
+    System.out.print(army[0].emmy[i] + " ");
+  }
+  System.out.println();
+  for (int i = 0; i<60; i++) {
+    System.out.print(army[0].fred[i] + " ");
+  }
+  System.out.println();
 }
 void draw(){
-  background(255);
+  background(200);
   for (int i = 0; i<60; i++) {
     army[i].jimmy();
     army[i].show();
@@ -35,21 +49,29 @@ class lilarmy {
     y = b;
     c = co;
     o = ind;
+    for (int i = 0; i<60; i++) {
+      emmy[i] = 5000;
+      fred[i] = 5000;
+    }
   }
   void show() {
     fill(c);
     rect(x,y,8,8);
     fill(255);
-    rect(x+1,y+1,1,1);
-    rect(x+6,y+1,1,1);
-    rect(x+1,y+6,6,1);
+    rect(x+1,y+1,2,2);
+    rect(x+5,y+1,2,2);
+    rect(x+1,y+5,6,2);
   }
   void jimmy() {
     countE = 0;
     countF = 0;
+    for (int i = 0; i<60; i++) {
+      emmy[i] = 5000;
+      fred[i] = 5000;
+    }
     if (c == color(255,0,0)) {
       for (int i = 0; i < 60; i++) {
-        if (army[i].c == color(0,0,255)){
+        if (army[i].c == color(0,0,255) && i != o){
           emmy[countE] = (int)(dist(army[i].x,army[i].y,x,y));
           if (emmy[countE]<12) {
             c = color(0,0,255);
@@ -57,21 +79,15 @@ class lilarmy {
           countE++;
         }
       }
-      for (int j = countE; j<60; j++) {
-        emmy[j] = 1000;
-      }
       for (int i = 0; i < 60; i++) {
-        if (army[i].c == color(0,255,0)){
+        if (army[i].c == color(0,255,0) && i != o){
           fred[countF] = (int)(dist(army[i].x,army[i].y,x,y));
           countF++;
         }
       }
-      for (int j = countF; j<60; j++) {
-        fred[j] = 1000;
-      }      
     } else if (c == color(0,255,0)) {
       for (int i = 0; i < 60; i++) {
-        if (army[i].c == color(255,0,0)){
+        if (army[i].c == color(255,0,0) && i != o){
           emmy[countE] = (int)(dist(army[i].x,army[i].y,x,y));
           if (emmy[countE]<12) {
             c = color(255,0,0);
@@ -79,21 +95,15 @@ class lilarmy {
           countE++;
         }
       }
-      for (int j = countE; j<60; j++) {
-        emmy[j] = 1000;
-      }
       for (int i = 0; i < 60; i++) {
-        if (army[i].c == color(0,0,255)){
+        if (army[i].c == color(0,0,255) && i != o){
           fred[countF] = (int)(dist(army[i].x,army[i].y,x,y));
           countF++;
         }
       }
-      for (int j = countF; j<60; j++) {
-        fred[j] = 1000;
-      }
-    } else {
+    } else if (c == color(0,0,255)) {
       for (int i = 0; i < 60; i++) {
-        if (army[i].c == color(0,255,0)){
+        if (army[i].c == color(0,255,0) && i != o){
           emmy[countE] = (int)(dist(army[i].x,army[i].y,x,y));
           if (emmy[countE]<12) {
             c = color(0,255,0);
@@ -101,33 +111,16 @@ class lilarmy {
           countE++;
         }
       }
-      for (int j = countE; j<60; j++) {
-        emmy[j] = 1000;
-      }
       for (int i = 0; i < 60; i++) {
-        if (army[i].c == color(255,0,0)){
+        if (army[i].c == color(255,0,0) && i != o){
           fred[countF] = (int)(dist(army[i].x,army[i].y,army[o].x,army[o].y));
           countF++;
         }
       }
-      for (int j = countF; j<60; j++) {
-        fred[j] = 1000;
-      }
     }
-    x += (int)(Math.random*5-2);
-    y += (int)(Math.random*5-2);
-   if (Math.random()<0.7) {
-     if (army[least(fred)].x > x) {
-      x += (int)(Math.random()*3);
-    } else {
-      x -= (int)(Math.random()*3);
-    }
-    if (army[least(fred)].y > y) {
-      y += (int)(Math.random()*3);
-    } else {
-      y -= (int)(Math.random()*3);
-    }
-   } else {
+    x += (int)(Math.random()*7-3);
+    y += (int)(Math.random()*7-3);
+    if (Math.random()<0.05) {
      if (army[least(emmy)].x > x) {
       x -= (int)(Math.random()*3);
     } else {
@@ -138,6 +131,17 @@ class lilarmy {
     } else {
       y += (int)(Math.random()*3);
     }
+   } else {
+     if (army[least(fred)].x > x) {
+      x += (int)(Math.random()*3);
+    } else {
+      x -= (int)(Math.random()*3);
+    }
+    if (army[least(fred)].y > y) {
+      y += (int)(Math.random()*3);
+    } else {
+      y -= (int)(Math.random()*3);
+    }
    }
     if (x<10) {
       x+=3;
@@ -147,6 +151,20 @@ class lilarmy {
       y+=3;
     } else if (y>490){
       y-=3;
+    }
+    if (emmy[0] == 5000 && fred[0] == 5000) {
+      frameRate(1);
+      fill(c);
+      textSize(30);
+      zawg = createFont("Segoe UI",50);
+      textFont(zawg);
+      if (c == color(255,0,0)) {
+        text("Red Wins!", 150, 250);
+      } else if (c == color(0,255,0)) {
+        text("Green Wins!",120,250);
+      } else {
+        text("Blue Wins!",130,250);
+      }
     }
   }
 }
@@ -159,5 +177,3 @@ int least (int[] list) {
   }
   return l;
 }
-
-
