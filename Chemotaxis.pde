@@ -22,7 +22,10 @@ void mousePressed() {
   frameRate(speeeeed);
 }
 void draw(){
-  background(200);
+  for(int h = 0; h<=495; h = h+5) {
+    fill(246-(h/500*112), 121+(h/5), 193+(h/500*62));
+    rect(0,h,500,5);
+  }
   for (int i = 0; i<60; i++) {
     army[i].jimmy();
     army[i].show();
