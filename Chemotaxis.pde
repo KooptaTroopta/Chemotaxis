@@ -4,6 +4,7 @@ PFont zawg;
 void setup(){
   size(500,500);
   noStroke();
+  frameRate(10);
   for (int i = 0; i<20; i++) {
     army[i] = new lilarmy((int)(Math.random()*501),(int)(Math.random()*401),color(0,0,255),i);
   }
@@ -16,19 +17,9 @@ void setup(){
 }
 void mousePressed() {
   speeeeed += 20;
-  if (speeeeed > 90)
+  if (speeeeed > 110)
   speeeeed = 10;
   frameRate(speeeeed);
-  System.out.println(army[0].x);
-  System.out.println(army[0].y);
-  for (int i = 0; i<60; i++) {
-    System.out.print(army[0].emmy[i] + " ");
-  }
-  System.out.println();
-  for (int i = 0; i<60; i++) {
-    System.out.print(army[0].fred[i] + " ");
-  }
-  System.out.println();
 }
 void draw(){
   background(200);
