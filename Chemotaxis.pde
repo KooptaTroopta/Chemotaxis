@@ -6,13 +6,13 @@ void setup(){
   noStroke();
   frameRate(10);
   for (int i = 0; i<20; i++) {
-    army[i] = new lilarmy((int)(Math.random()*501),(int)(Math.random()*401),color(0,0,255),i);
+    army[i] = new lilarmy((int)(Math.random()*501),(int)(Math.random()*501),color(0,0,255),i);
   }
   for (int i = 20; i<40; i++) {
-    army[i] = new lilarmy((int)(Math.random()*501),(int)(Math.random()*401),color(255,0,0),i);
+    army[i] = new lilarmy((int)(Math.random()*501),(int)(Math.random()*501),color(255,0,0),i);
   }
   for (int i = 40; i<60; i++) {
-    army[i] = new lilarmy((int)(Math.random()*501),(int)(Math.random()*401),color(0,255,0),i);
+    army[i] = new lilarmy((int)(Math.random()*501),(int)(Math.random()*501),color(0,255,0),i);
   }
 }
 void mousePressed() {
